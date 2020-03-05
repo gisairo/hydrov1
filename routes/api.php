@@ -13,6 +13,11 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::namespace('api')->group(function (){
+    Route::get('/smart-devices', 'SmartdeviceController@index');
+    Route::post('/smart-devices', 'SmartdeviceController@store');
+    Route::get('/smart-devices/{id}', 'SmartdeviceController@show');
+    Route::put('/smart-devices/{id}', 'SmartdeviceController@update');
+    Route::delete('/smart-devices/{id}', 'SmartdeviceController@destroy');
 });
+// Route::resource('smart-devices', 'API\SmartdeviceController');
